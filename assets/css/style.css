@@ -25,6 +25,12 @@ body {
     font-variant: small-caps;
 }
 
+.custom-main {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 1%;
+}
+
 .card-search-custom {
     background: var(--pop);
     color: var(--dark);
@@ -43,4 +49,18 @@ body {
 
 .container-weather-display {
     background: var(--dark);
+}
+
+.custom-weather-display {
+    height: 100%;
+}
+
+.custom-today {
+    background: var(--light);
+    height: 50%;
+}
+
+.custom-5day {
+    height: 25%;
+    width: 100%;
 }
