@@ -1,0 +1,46 @@
+:root {
+    --dark: #555B6E;
+    --blgr: #89B0AE;
+    --ltblgr: #BEE3DB;
+    --light: #FAF9F9;
+    --pop:#FFD6BA;
+}
+
+body {
+    background: var(--light);
+    color: var(--dark);
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+}
+
+.header {
+    background: linear-gradient(var(--ltblgr), var(--blgr));
+    color: var(--dark);
+    height: 75px;
+    display: flex;
+}
+
+.header h1 {
+    margin: auto;
+    font-weight:500;
+    font-variant: small-caps;
+}
+
+.card-search-custom {
+    background: var(--pop);
+    color: var(--dark);
+    font-weight:bold;
+}
+
+.btn-custom {
+    background: linear-gradient(var(--ltblgr), var(--blgr));
+    color:var(--dark);
+}
+
+.btn-city-custom {
+    background: var(--dark);
+    color: var(--light);
+}
+
+.container-weather-display {
+    background: var(--dark);
+}
