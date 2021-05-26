@@ -37,19 +37,17 @@
     <main class="d-flex justify-content-around row custom-main">
         <section class="card col-lg-3 card-search-custom">
             <div class="card-body">
-                <div class="form-group flex">
+                <div class="form-group flex" id="input-reset">
                     <label for="city"> Search for City:</label>
-                    <input type="text" class="form-control" id="city" required placeholder="Name of City...">
-                    <input type="submit" class="btn btn-block btn-custom mt-4" value="Search"></input>
+                    <input type="text" class="form-control" id="city-input" required placeholder="Name of City...">
+                    <input type="submit" class="btn btn-block btn-custom mt-4" id="fetch-btn" value="Search"></input>
                 </div>                
             </div>
 
             <hr>
 
             <div class="card-body">
-                <ul class="list-group list-group-flush">
-                    <li class="btn mb-1 btn-city-custom">Cras justo odio</li>
-                    <li class="btn mb-1 btn-city-custom">Cras justo odio</li>
+                <ul id=searched-cities class="list-group list-group-flush">
                 </ul>
             </div>
 
