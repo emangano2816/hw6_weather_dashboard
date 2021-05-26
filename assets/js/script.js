@@ -6,17 +6,36 @@ $(document).ready(function(){
     var searchedCitiesUL = $('#searched-cities');
     var city;
     var cityLi;
+    var latitude;
+    var longitude;
 
-    function getApi() {
+    function getLatandLong() {
         var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city +  "&appid=" + APIKey;
 
-        fetch(requestUrl)
+         fetch(requestUrl)
             .then(function(response) {
                 return response.json();
             })
             .then(function(data) {
                 console.log(data);
-                cityInput.text('');
+                
+                latitude=data.coord.lat;
+                longitude=data.coord.lon;
+
+                getWeather(latitude,longitude);
+
+            })
+    }
+
+    function getWeather(lat, lon) {
+        var requestWeatherUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&exclude=minutely,hourly,alerts&appid=" + APIKey;
+
+        fetch(requestWeatherUrl)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data){
+                console.log(data);
             })
     }
 
@@ -24,10 +43,10 @@ $(document).ready(function(){
         city = cityInput.val();
         console.log(city);
 
-        getApi();
+        getLatandLong();
         addSearchedCity();
 
-        $('#city-input').val('');
+        cityInput.val('');
         
     })
 
