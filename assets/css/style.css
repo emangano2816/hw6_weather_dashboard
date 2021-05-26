@@ -49,17 +49,17 @@ body {
 
 .container-weather-display {
     background: var(--dark);
-}
-
-.custom-weather-display {
-    height: 100%;
+    padding: 15px;
 }
 
 .custom-today {
     background: var(--light);
+    line-height: 0.75;
+    font-size: smaller;
 }
 
-.custom-5day {
-    height: 25%;
-    width: 100%;
+
+.futurecast {
+    background: linear-gradient(var(--ltblgr),var(--blgr));
+    height: 100px;
 }

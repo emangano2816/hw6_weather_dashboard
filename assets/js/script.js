@@ -38,14 +38,17 @@ $(document).ready(function(){
             .then(function(data){
                 console.log(data);
 
-                // var dateToday = moment().unix(data.current.dt).format("MM/DD/YYYY");
-                var cityName = $('<h2>').text("Current weather for: " + city);
+                var dateToday = moment.unix(data.current.dt).format("MM/DD/YYYY");
+                var cityName = $('<h2>').text(city + " (" + dateToday + ")");
                 var currentDescription = $('<p>').text("Description: " + data.current.weather[0].description);
-                var currentTemp = $('<p>').text("Temp: " + data.current.temp + "\u00B0 C");
+                var currentIcon = data.current.weather[0].icon;
+                var currentIconDisplay = $('<img>').attr('src',"http://openweathermap.org/img/w/" + currentIcon + ".png");
+                var currentTemp = $('<p>').text("Temp: " + data.current.temp + "\u00B0C");
                 var currentHumidity = $('<p>').text("Humidity: " + data.current.humidity + "%");
                 var currentWind = $('<p>').text("Wind Speed: " + data.current.wind_speed + " MPH");
                 var currentUvi = $('<p>').text("UV Index: " + data.current.uvi);
                 currentForecast.append(cityName);
+                cityName.append(currentIconDisplay)
                 currentForecast.append(currentDescription);
                 currentForecast.append(currentTemp);
                 currentForecast.append(currentHumidity);
