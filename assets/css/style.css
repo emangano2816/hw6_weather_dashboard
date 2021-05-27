@@ -66,6 +66,8 @@ body {
 
 .header-forecast {
     color: var(--pop);
+    padding-top:25px;
+    padding-bottom: 0px;
 
 }
 .futurecast {
