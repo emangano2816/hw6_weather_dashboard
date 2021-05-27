@@ -11,6 +11,12 @@ $(document).ready(function(){
     var currentForecast = $('#todays-weather');
     var futureForecast = $('#futurecast-parent');
     var displayReset = false;
+    
+    function SearchedCities (city, latitude, longitude) {
+        this.city=city,
+        this.latitude=latitude,
+        this.longitude=longitude
+    }
 
     function getLatandLong() {
         var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city +  "&appid=" + APIKey;
@@ -22,8 +28,15 @@ $(document).ready(function(){
             .then(function(data) {
                 console.log(data);
                 
+                cityName=data.name;
+                console.log(cityName);
                 latitude=data.coord.lat;
                 longitude=data.coord.lon;
+
+                var city = new SearchedCities(cityName,latitude,longitude);
+
+                console.log(city);
+                console.log(JSON.stringify(city));
 
                 getWeather(latitude,longitude);
 
@@ -74,7 +87,7 @@ $(document).ready(function(){
             var futureDateDisplay = $('<h4>').text(dateFuture);
             var futureIcon = data.daily[i].weather[0].icon;
             var futureIconDisplay = $('<img>').attr('src',"http://openweathermap.org/img/w/" + futureIcon + ".png");
-            futureIconDisplay.attr('width', '75px');
+            futureIconDisplay.attr('width', '60px');
             var futureTemp = $('<p>').text("Temp: " + data.daily[i].temp.day + "\u00B0C");
             var futureHumidity = $('<p>').text("Humidity: " + data.daily[i].humidity + "%");
             var futureWind = $('<p>').text("Wind Speed: " + data.daily[i].wind_speed + " MPH");

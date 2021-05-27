@@ -37,6 +37,7 @@ body {
     background: var(--pop);
     color: var(--dark);
     font-weight:bold;
+    border-radius: 5px;
 }
 
 .btn-custom {
@@ -47,6 +48,10 @@ body {
 .btn-city-custom {
     background: var(--dark);
     color: var(--light);
+}
+
+hr {
+    width:90%;
 }
 
 .container-weather-display {
