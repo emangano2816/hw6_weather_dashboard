@@ -6,20 +6,15 @@ $(document).ready(function(){
     var searchedCitiesUL = $('#searched-cities');
     var city;
     var cityLi;
+    var citySearched;
     var latitude;
     var longitude;
     var currentForecast = $('#todays-weather');
     var futureForecast = $('#futurecast-parent');
     var displayReset = false;
     
-    function SearchedCities (city, latitude, longitude) {
-        this.city=city,
-        this.latitude=latitude,
-        this.longitude=longitude
-    }
-
-    function getLatandLong() {
-        var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city +  "&appid=" + APIKey;
+    function getLatandLong(citySearch) {
+        var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + citySearch +  "&appid=" + APIKey;
 
          fetch(requestUrl)
             .then(function(response) {
@@ -28,15 +23,8 @@ $(document).ready(function(){
             .then(function(data) {
                 console.log(data);
                 
-                cityName=data.name;
-                console.log(cityName);
                 latitude=data.coord.lat;
                 longitude=data.coord.lon;
-
-                var city = new SearchedCities(cityName,latitude,longitude);
-
-                console.log(city);
-                console.log(JSON.stringify(city));
 
                 getWeather(latitude,longitude);
 
@@ -118,7 +106,7 @@ $(document).ready(function(){
         }
 
         if (city !== '') {
-            getLatandLong();
+            getLatandLong(city);
             addSearchedCity();     
 
             cityInput.val('');   
@@ -132,4 +120,27 @@ $(document).ready(function(){
         cityLi.addClass('btn mb-1 btn-city-custom');
         searchedCitiesUL.append(cityLi);
     }
+
+    searchedCitiesUL.on('click', '.btn', displaySearchedCity) 
+
+    function displaySearchedCity (event){
+        event.preventDefault();
+        event.stopPropagation();
+
+        citySearched = $(event.target).text();
+        console.log(citySearched);
+
+        if (citySearched===city) {
+            return alert('City weather already displayed.')
+        } else {
+            city = citySearched;
+            resetWeatherDisplay();
+            getLatandLong(citySearched);
+            console.log('test')
+        }
+
+        
+    }
+
+
 })
