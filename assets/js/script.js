@@ -12,6 +12,7 @@ $(document).ready(function(){
     var currentForecast = $('#todays-weather');
     var futureForecast = $('#futurecast-parent');
     var displayReset = false;
+    var searchedLi = [];
     
     function getLatandLong(citySearch) {
         var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + citySearch +  "&appid=" + APIKey;
@@ -107,6 +108,9 @@ $(document).ready(function(){
 
         if (city !== '') {
             getLatandLong(city);
+            searchedLi.push(city);
+            console.log(searchedLi)
+            storeSearchedCity();
             addSearchedCity();     
 
             cityInput.val('');   
@@ -116,9 +120,29 @@ $(document).ready(function(){
     })
 
     function addSearchedCity() {
-        cityLi = $('<li>').text(city);
-        cityLi.addClass('btn mb-1 btn-city-custom');
-        searchedCitiesUL.append(cityLi);
+        searchedCitiesUL.empty();
+
+        for (var i=0; i<searchedLi.length; i++){
+            cityLi = $('<li>').text(searchedLi[i]);
+            cityLi.addClass('btn mb-1 btn-city-custom');
+            searchedCitiesUL.append(cityLi);
+        }
+    }
+
+    function initSearchedCityList() {
+        var storeSearchedCities = JSON.parse(localStorage.getItem("searchedCity"));
+
+        if (storeSearchedCities !== null){
+            searchedLi = storeSearchedCities;
+        }
+
+        addSearchedCity();
+    }
+
+    initSearchedCityList();
+
+    function storeSearchedCity() {
+        localStorage.setItem("searchedCity",JSON.stringify(searchedLi));
     }
 
     searchedCitiesUL.on('click', '.btn', displaySearchedCity) 
@@ -138,8 +162,6 @@ $(document).ready(function(){
             getLatandLong(citySearched);
             console.log('test')
         }
-
-        
     }
 
 
