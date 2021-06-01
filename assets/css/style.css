@@ -75,6 +75,27 @@ hr {
     padding-bottom: 0px;
 
 }
+
+.uvIndex {
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.favorable {
+    background-color:green;
+
+}
+
+.moderate {
+    background-color: orange;
+}
+
+.severe {
+    background-color: red;
+}
+
+
 .futurecast {
     display:flex;
     flex-direction:column;

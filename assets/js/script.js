@@ -3,6 +3,7 @@ $(document).ready(function(){
     var APIKey = "2ff07a7d809c904ff7863737c17f0961";
     var cityInput = $('#city-input');
     var fetchBtn = $('#fetch-btn');
+    var resetCityList = $('#reset-cities-btn');
     var searchedCitiesUL = $('#searched-cities');
     var city;
     var cityLi;
@@ -13,6 +14,8 @@ $(document).ready(function(){
     var futureForecast = $('#futurecast-parent');
     var displayReset = false;
     var searchedLi = [];
+
+    resetCityList.attr('display','none');
     
     function getLatandLong(citySearch) {
         var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + citySearch +  "&appid=" + APIKey;
@@ -57,7 +60,17 @@ $(document).ready(function(){
         var currentTemp = $('<p>').text("Temp: " + data.current.temp + "\u00B0C");
         var currentHumidity = $('<p>').text("Humidity: " + data.current.humidity + "%");
         var currentWind = $('<p>').text("Wind Speed: " + data.current.wind_speed + " MPH");
-        var currentUvi = $('<p>').text("UV Index: " + data.current.uvi);
+        var currentUvColor = $('<span>').text(data.current.uvi);
+
+            if (data.current.uvi <= 2) {
+                currentUvColor.addClass('favorable uvIndex');
+            } else if (data.current.uvi > 8) {
+                currentUvColor.addClass('severe uvIndex');
+            } else {
+                currentUvColor.addClass('moderate uvIndex');
+            };
+
+        var currentUvi = $('<p>').text("UV Index: ").append(currentUvColor);
         currentForecast.append(cityName);
         cityName.append(currentIconDisplay)
         currentForecast.append(currentDescription);
@@ -65,11 +78,12 @@ $(document).ready(function(){
         currentForecast.append(currentHumidity);
         currentForecast.append(currentWind);
         currentForecast.append(currentUvi);
+        currentForecast.append(currentUvi);
 
         displayReset=true;
         console.log(displayReset);
     }
-
+    
     function populate5DayForecast(data) {
         for (var i=1; i<6; i++) {
             var dateFuture = moment.unix(data.daily[i].dt).format("MM/DD/YYYY");
@@ -134,6 +148,10 @@ $(document).ready(function(){
 
         if (storeSearchedCities !== null){
             searchedLi = storeSearchedCities;
+            resetCityList.attr('display', 'block');
+            console.log(resetCityList.attr('display'));
+        } else {
+            searchedLi = [];
         }
 
         addSearchedCity();
@@ -160,9 +178,17 @@ $(document).ready(function(){
             city = citySearched;
             resetWeatherDisplay();
             getLatandLong(citySearched);
-            console.log('test')
         }
     }
+
+    resetCityList.on('click', function(event){
+        event.preventDefault();
+        event.stopPropagation();
+
+        localStorage.clear();
+        initSearchedCityList();
+        resetWeatherDisplay();
+    })
 
 
 })
