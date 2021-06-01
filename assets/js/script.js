@@ -15,8 +15,7 @@ $(document).ready(function(){
     var displayReset = false;
     var searchedLi = [];
 
-    resetCityList.attr('display','none');
-    
+   
     function getLatandLong(citySearch) {
         var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + citySearch +  "&appid=" + APIKey;
 
