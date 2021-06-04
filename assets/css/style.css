@@ -13,7 +13,7 @@ body {
 }
 
 
-
+/* Custom sytles for header section */
 .header {
     background: linear-gradient(var(--ltblgr), var(--blgr));
     color: var(--dark);
@@ -27,12 +27,14 @@ body {
     font-variant: small-caps;
 }
 
+/* Custom styles for main container */
 .custom-main {
     margin-left: 0;
     margin-right: 0;
     margin-top: 1%;
 }
 
+/* Custom styles for the search container */
 .card-search-custom {
     background: var(--pop);
     color: var(--dark);
@@ -40,6 +42,7 @@ body {
     border-radius: 5px;
 }
 
+/* Custom styles for the search button */
 .btn-custom {
     background: linear-gradient(var(--ltblgr), var(--blgr));
     color:var(--dark);
@@ -50,10 +53,12 @@ body {
     color: var(--light);
 }
 
+/* Custom styles for the horizontal rule */
 hr {
     width:90%;
 }
 
+/* Custom styles for the current and 5-day forecast */
 .container-weather-display {
     background: var(--dark);
     padding: 15px;
@@ -75,6 +80,7 @@ hr {
     padding-bottom: 0px;
 }
 
+/* Styles for the UV Index display */
 .uvIndex {
     border-radius: 5px;
     padding-left: 10px;
@@ -94,7 +100,7 @@ hr {
     background-color: red;
 }
 
-
+/* Custom style for the 5-day forecast elements added via JS */
 .futurecast {
     display:flex;
     flex-direction:column;

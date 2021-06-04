@@ -16,6 +16,7 @@ $(document).ready(function(){
     var searchedLi = [];
 
    
+    //Function searches API using city supplied by user and returns cityies latitude and longitude
     function getLatandLong(citySearch) {
         var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + citySearch +  "&appid=" + APIKey;
 
@@ -34,6 +35,7 @@ $(document).ready(function(){
             })
     }
 
+    //Function searches API using latitude and longitude - returns current and forecasted  weather
     function getWeather(lat, lon) {
         var requestWeatherUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&exclude=minutely,hourly,alerts&appid=" + APIKey;
 
@@ -50,6 +52,7 @@ $(document).ready(function(){
             })
     }
 
+    //Function populates current weather elements using data included in API response
     function populateCurrentWeather(data) {
         var dateToday = moment.unix(data.current.dt).format("MM/DD/YYYY");
         var cityName = $('<h2>').text(city + " (" + dateToday + ")");
@@ -83,6 +86,7 @@ $(document).ready(function(){
         console.log(displayReset);
     }
     
+    //Function populates elements for 5-day forecast using data from API response
     function populate5DayForecast(data) {
         for (var i=1; i<6; i++) {
             var dateFuture = moment.unix(data.daily[i].dt).format("MM/DD/YYYY");
@@ -104,11 +108,13 @@ $(document).ready(function(){
         }
     }
 
+    //Resets the current and 5-day forecast 
     function resetWeatherDisplay() {
         currentForecast.empty();
         futureForecast.empty();
     }
 
+    //Click event for initial city search
     fetchBtn.on('click', function(event){
         event.preventDefault();
         
@@ -132,6 +138,7 @@ $(document).ready(function(){
         }
     })
 
+    //Function to add the searched city as a button on the page
     function addSearchedCity() {
         searchedCitiesUL.empty();
 
@@ -142,6 +149,7 @@ $(document).ready(function(){
         }
     }
 
+    //Grabs information from local Storage and displays it upon page refresh or page reopening
     function initSearchedCityList() {
         var storeSearchedCities = JSON.parse(localStorage.getItem("searchedCity"));
 
@@ -158,10 +166,12 @@ $(document).ready(function(){
 
     initSearchedCityList();
 
+    //Saves searched city to localStorage
     function storeSearchedCity() {
         localStorage.setItem("searchedCity",JSON.stringify(searchedLi));
     }
 
+    //Click event for each saved searched city
     searchedCitiesUL.on('click', '.btn', displaySearchedCity) 
 
     function displaySearchedCity (event){
@@ -180,6 +190,7 @@ $(document).ready(function(){
         }
     }
 
+    //Clears localStorage when clear button is clicked
     resetCityList.on('click', function(event){
         event.preventDefault();
         event.stopPropagation();
