@@ -47,4 +47,4 @@ Upon opening the application the user is able to search for a city.  The applica
 
 
 ## Application Functionality
-![weather_dashboard.](./assets/images/hw6_weather_dashboard_demo.gif)
+![weather_dashboard.](./assets/images/hw6_weather_dashboard.demo.gif)
