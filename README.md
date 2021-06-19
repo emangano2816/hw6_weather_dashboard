@@ -18,5 +18,5 @@ Addtionally, the searched city is "pinned" to the application for access later o
 ## Application Functionality
 ![weather_dashboard.](./assets/images/hw6_weather_dashboard.demo.gif)
 
-## Contributor(s)
-https://github.com/emangano2816
+## Contact Information
+emangano2816@gmail.com
