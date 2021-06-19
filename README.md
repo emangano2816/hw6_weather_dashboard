@@ -8,6 +8,13 @@ Upon opening the application the user is able to search for a city.  The applica
 
 Addtionally, the searched city is "pinned" to the application for access later on using localStorage.  The user is able to search for as many cities as desired.  Upon clicking a city that has been pinned to the page, the current and 5-day forecast will be displayed for that city.  The user also has the option to clear the searched list if it becomes unweildly. 
 
+## Technologies Used
+1. HTML
+2. CSS (custom, bootstrap)
+3. Javascript Vanilla
+4. jQuery
+5. Moment.js
+
 ## Application Functionality
 ![weather_dashboard.](./assets/images/hw6_weather_dashboard.demo.gif)
 
