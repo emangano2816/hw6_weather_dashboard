@@ -10,10 +10,12 @@ Addtionally, the searched city is "pinned" to the application for access later o
 
 ## Technologies Used
 1. HTML
-2. CSS (custom, bootstrap)
-3. Javascript Vanilla
-4. jQuery
-5. Moment.js
+2. CSS
+3. Boostrap CSS
+4. Javascript
+5. jQuery
+6. Moment.js
+7. Third-party API
 
 ## Application Functionality
 ![weather_dashboard.](./assets/images/hw6_weather_dashboard.demo.gif)
