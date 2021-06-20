@@ -12,7 +12,7 @@ Addtionally, the searched city is "pinned" to the application for access later o
 1. HTML
 2. CSS
 3. Boostrap CSS
-4. Javascript
+4. JavaScript
 5. jQuery
 6. Moment.js
 7. Third-party API
@@ -22,3 +22,6 @@ Addtionally, the searched city is "pinned" to the application for access later o
 
 ## Contact Information
 emangano2816@gmail.com
+
+## License
+This project is licensed under the terms of the MIT license.
