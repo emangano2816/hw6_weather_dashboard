@@ -1,7 +1,7 @@
 # Weather Dashboard
 
 ## Deployed Application
-https://emangano2816.github.io/hw6_weather_dashboard/
+https://emangano2816.github.io/weather_dashboard/
 
 ## Description
 Upon opening the application the user is able to search for a city.  The application will return the current and 5-day forecast for the searched city.  The current forecast displays the following elements: city name, date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index.  The UV index is color coded using the following formula:  [0,2] - green (i.e., favorable), (2,8) - orange (i.e., moderate), >= 8 - red (i.e., severe).  The 5-day forecast for the city displays: date, icon represetnation of weather conditions, the temperature, the windw spped, and the humidity.
